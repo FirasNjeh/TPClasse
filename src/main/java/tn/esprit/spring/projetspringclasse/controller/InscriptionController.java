@@ -31,5 +31,9 @@ public class InscriptionController {
     public List<Inscription> retrieveInscriptionCours(@PathVariable Long numCours) {
         return inscriptionService.retrieveInscriptionCours(numCours);
     }
+    @PostMapping("/add/{numSkieur}")
+    public Inscription addRegistrationAndAssignToSkieur(@RequestBody Inscription registration,@PathVariable Long numSkieur){
+        return inscriptionService.addRegistrationAndAssignToSkieur(registration,numSkieur);
+    }
 
 }

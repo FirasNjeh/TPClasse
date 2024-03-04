@@ -11,4 +11,5 @@ public interface InscriptionService {
     Inscription updateInscription (Inscription inscription);
     Inscription retrieveInscription (Long numInscription);
     List<Inscription> retrieveInscriptionCours(Long numCours);
+    Inscription addRegistrationAndAssignToSkieur(Inscription registration,Long numSkieur);
 }

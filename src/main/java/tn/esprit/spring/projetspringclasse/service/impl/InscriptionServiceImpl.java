@@ -3,13 +3,16 @@ package tn.esprit.spring.projetspringclasse.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.projetspringclasse.entity.Inscription;
+import tn.esprit.spring.projetspringclasse.entity.Skieur;
 import tn.esprit.spring.projetspringclasse.repository.InscriptionRepository;
+import tn.esprit.spring.projetspringclasse.repository.SkieurRepository;
 import tn.esprit.spring.projetspringclasse.service.InscriptionService;
 
 import java.util.List;
 @Service
 @AllArgsConstructor
 public class InscriptionServiceImpl implements InscriptionService {
+    private SkieurRepository skieurRepository;
     private InscriptionRepository inscriptionRepository;
     @Override
     public List<Inscription> retrieveAllInscription() {
@@ -34,5 +37,12 @@ public class InscriptionServiceImpl implements InscriptionService {
     @Override
     public List<Inscription> retrieveInscriptionCours(Long numCours) {
         return inscriptionRepository.findByCoursNumCours(numCours);
+    }
+
+    @Override
+    public Inscription addRegistrationAndAssignToSkieur(Inscription registration, Long numSkieur) {
+        Skieur skieur=skieurRepository.findById(numSkieur).orElse(null);
+        registration.setSkieur(skieur);
+        return inscriptionRepository.save(registration);
     }
 }
