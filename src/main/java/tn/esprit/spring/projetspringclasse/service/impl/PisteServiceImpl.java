@@ -3,7 +3,9 @@ package tn.esprit.spring.projetspringclasse.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.projetspringclasse.entity.Piste;
+import tn.esprit.spring.projetspringclasse.entity.Skieur;
 import tn.esprit.spring.projetspringclasse.repository.PisteRepository;
+import tn.esprit.spring.projetspringclasse.repository.SkieurRepository;
 import tn.esprit.spring.projetspringclasse.service.PisteService;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 public class PisteServiceImpl implements PisteService {
 
     private PisteRepository pisteRepository;
+    private SkieurRepository skieurRepository;
 
     @Override
     public List<Piste> retrieveAllPistes() {
@@ -58,5 +61,14 @@ public class PisteServiceImpl implements PisteService {
     @Override
     public List<Piste> retrievePiesteSkieurNomS(String nom) {
         return pisteRepository.findBySkieursNomSLike(nom);
+    }
+
+    @Override
+    public Skieur assignSkieurToPiste(Long numSkieur, Long numPiste) {
+        Skieur skieur=skieurRepository.findById(numSkieur).orElse(null);
+        Piste piste=pisteRepository.findById(numPiste).orElse(null);
+        piste.getSkieurs().add(skieur);
+        pisteRepository.save(piste);
+        return skieur;
     }
 }

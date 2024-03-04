@@ -27,7 +27,7 @@ public class InscriptionController {
     public Inscription retrieveInscription(@PathVariable Long numInscription) {
         return inscriptionService.retrieveInscription(numInscription);
     }
-    @GetMapping("/inscription/{numCours}")
+    @GetMapping("/{numCours}")
     public List<Inscription> retrieveInscriptionCours(@PathVariable Long numCours) {
         return inscriptionService.retrieveInscriptionCours(numCours);
     }

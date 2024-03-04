@@ -1,6 +1,7 @@
 package tn.esprit.spring.projetspringclasse.service;
 
 import tn.esprit.spring.projetspringclasse.entity.Piste;
+import tn.esprit.spring.projetspringclasse.entity.Skieur;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface PisteService {
     List<Piste> retrievePisteSkieur(Long numSkieur);
     List<Piste> retrievePiesteSkieurInscri(String nomS, Long numInscri);
     List<Piste> retrievePiesteSkieurNomS(String nom);
+    Skieur assignSkieurToPiste(Long numSkieur,Long numPiste);
 }

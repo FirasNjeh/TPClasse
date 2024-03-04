@@ -3,6 +3,7 @@ package tn.esprit.spring.projetspringclasse.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.projetspringclasse.entity.Piste;
+import tn.esprit.spring.projetspringclasse.entity.Skieur;
 import tn.esprit.spring.projetspringclasse.service.PisteService;
 
 import java.util.List;
@@ -46,5 +47,8 @@ public class PisteController {
     public List<Piste> retrievePisteSkieurNomS(@PathVariable String nom) {
         return pisteService.retrievePiesteSkieurNomS(nom);
     }
-
+@PutMapping("/{numSkieur}/{numPiste}")
+    public Skieur assignSkieurToPiste(@PathVariable Long numSkieur,@PathVariable Long numPiste) {
+        return pisteService.assignSkieurToPiste(numSkieur, numPiste);
+    }
 }
