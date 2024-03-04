@@ -33,4 +33,9 @@ public class SkieurServiceImpl implements SkieurService {
     public Skieur retrieveSkieur(Long numSkieur) {
         return skieurRepository.findById(numSkieur).orElse(null);
     }
+
+    @Override
+    public List<Skieur> retrieveSkieurPiste(Long a) {
+        return skieurRepository.findByPistesNumPiste(a);
+    }
 }

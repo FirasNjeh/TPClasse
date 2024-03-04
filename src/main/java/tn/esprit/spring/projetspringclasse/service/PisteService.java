@@ -11,4 +11,5 @@ public interface PisteService {
     Piste retrievePiste (Long numPiste);
     List<Piste> retrievePisteSkieur(Long numSkieur);
     List<Piste> retrievePiesteSkieurInscri(String nomS, Long numInscri);
+    List<Piste> retrievePiesteSkieurNomS(String nom);
 }

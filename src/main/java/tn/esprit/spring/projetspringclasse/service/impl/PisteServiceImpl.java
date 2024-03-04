@@ -54,4 +54,9 @@ public class PisteServiceImpl implements PisteService {
     public List<Piste> retrievePiesteSkieurInscri(String nomS, Long numInscri) {
         return pisteRepository.findBySkieursNomSLikeAndSkieursInscriptionsNumInscription(nomS, numInscri);
     }
+
+    @Override
+    public List<Piste> retrievePiesteSkieurNomS(String nom) {
+        return pisteRepository.findBySkieursNomSLike(nom);
+    }
 }

@@ -12,6 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 public class SkieurController {
 
+
+    @GetMapping("/{numPiste}")
+    public List<Skieur> retrieveSkieurPiste(@PathVariable Long numPiste) {
+
+        return skieurService.retrieveSkieurPiste(numPiste);}
+
     private final SkieurService skieurService;
 
     @GetMapping
@@ -33,5 +39,6 @@ public class SkieurController {
     public Skieur retrieveSkieur(@PathVariable Long numSkieur) {
         return skieurService.retrieveSkieur(numSkieur);
     }
+
 }
 

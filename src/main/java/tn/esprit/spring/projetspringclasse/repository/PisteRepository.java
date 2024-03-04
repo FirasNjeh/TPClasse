@@ -8,5 +8,6 @@ import java.util.List;
 public interface PisteRepository extends JpaRepository<Piste,Long> {
     List<Piste> findBySkieursNumSkieur(Long numSkieur);
     List<Piste> findBySkieursNomSLikeAndSkieursInscriptionsNumInscription(String nomS, Long numInscri);
+    List<Piste> findBySkieursNomSLike(String nom);
 }
 

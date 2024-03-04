@@ -42,5 +42,9 @@ public class PisteController {
     public List<Piste> retrievePisteSkieurInscri(@PathVariable Long numInscri,@PathVariable String nomS) {
         return pisteService.retrievePiesteSkieurInscri(nomS, numInscri);
     }
+    @GetMapping("/Afficher/{nom}")
+    public List<Piste> retrievePisteSkieurNomS(@PathVariable String nom) {
+        return pisteService.retrievePiesteSkieurNomS(nom);
+    }
 
 }
