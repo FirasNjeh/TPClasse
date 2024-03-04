@@ -35,5 +35,9 @@ public class InscriptionController {
     public Inscription addRegistrationAndAssignToSkieur(@RequestBody Inscription registration,@PathVariable Long numSkieur){
         return inscriptionService.addRegistrationAndAssignToSkieur(registration,numSkieur);
     }
+@PutMapping("/{numRegistration}/{numCours}")
+    public Inscription assignRegistrationToCourse(@PathVariable Long numRegistration,@PathVariable Long numCours) {
+        return inscriptionService.assignRegistrationToCourse(numRegistration, numCours);
+    }
 
 }

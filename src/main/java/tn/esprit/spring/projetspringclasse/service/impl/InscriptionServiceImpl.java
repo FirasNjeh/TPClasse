@@ -2,8 +2,10 @@ package tn.esprit.spring.projetspringclasse.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.spring.projetspringclasse.entity.Cours;
 import tn.esprit.spring.projetspringclasse.entity.Inscription;
 import tn.esprit.spring.projetspringclasse.entity.Skieur;
+import tn.esprit.spring.projetspringclasse.repository.CoursRepository;
 import tn.esprit.spring.projetspringclasse.repository.InscriptionRepository;
 import tn.esprit.spring.projetspringclasse.repository.SkieurRepository;
 import tn.esprit.spring.projetspringclasse.service.InscriptionService;
@@ -14,6 +16,7 @@ import java.util.List;
 public class InscriptionServiceImpl implements InscriptionService {
     private SkieurRepository skieurRepository;
     private InscriptionRepository inscriptionRepository;
+    private CoursRepository coursRepository;
     @Override
     public List<Inscription> retrieveAllInscription() {
         return inscriptionRepository.findAll();
@@ -44,5 +47,13 @@ public class InscriptionServiceImpl implements InscriptionService {
         Skieur skieur=skieurRepository.findById(numSkieur).orElse(null);
         registration.setSkieur(skieur);
         return inscriptionRepository.save(registration);
+    }
+
+    @Override
+    public Inscription assignRegistrationToCourse(Long numRegistration, Long numCours) {
+        Cours cours=coursRepository.findById(numCours).orElse(null);
+        Inscription inscription=inscriptionRepository.findById(numRegistration).orElse(null);
+        inscription.setCours(cours);
+        return inscriptionRepository.save(inscription);
     }
 }
