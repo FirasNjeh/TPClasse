@@ -35,5 +35,9 @@ public class MoniteurController {
     public Moniteur retrieveMoniteur(@PathVariable Long numMoniteur) {
         return moniteurService.retrieveMoniteur(numMoniteur);
     }
+@PutMapping("/liste/{numCourse}")
+    public Moniteur addInstructorAndAssignToCourse(@RequestBody Moniteur moniteur,@PathVariable Long numCourse) {
+        return moniteurService.addInstructorAndAssignToCourse(moniteur, numCourse);
+    }
 }
 
